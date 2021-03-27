@@ -178,6 +178,36 @@ ORDER BY `job_title` ASC;
 
 
 
+SELECT 
+    *
+FROM
+    `projects`
+ORDER BY `start_date` , `name` , `project_id`
+LIMIT 10;
+
+
+
+SELECT 
+    `first_name`, `last_name`, `hire_date`
+FROM
+    `employees`
+ORDER BY `hire_date` DESC
+LIMIT 7;
+
+
+
+UPDATE `employees` 
+SET 
+    `salary` = `salary` * 1.12
+WHERE
+    `department_id` = 1
+        OR `department_id` = 2
+        OR `department_id` = 4
+        OR `department_id` = 11;
+        
+SELECT `salary` FROM `employees`;
+
+
    
 
 
