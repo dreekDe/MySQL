@@ -10,7 +10,9 @@ FROM
 FROM
     `wizzard_deposits`; 
  
- SELECT 
+ 
+ 
+SELECT 
     `deposit_group`,
     MAX(`magic_wand_size`) AS `longest_magic_wand`
 FROM
