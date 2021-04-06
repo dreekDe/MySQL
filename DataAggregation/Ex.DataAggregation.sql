@@ -125,8 +125,8 @@ FROM
                 FROM
                     `wizzard_deposits`
                 WHERE
-                    `id` = wd.id + 1) AS `next`
+                    `id` = current.id + 1) AS `next`
     FROM
-        `wizzard_deposits` AS `wd`) AS `diff`; 
+        `wizzard_deposits` AS `current`) AS `diff`; 
 
 
