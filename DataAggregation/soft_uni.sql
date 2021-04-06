@@ -47,7 +47,7 @@ ORDER BY `department_id`;
    
 
 SELECT 
-    COUNT(`manager_id`) AS ` `
+    COUNT(*)
 FROM
     `employees`
 WHERE
