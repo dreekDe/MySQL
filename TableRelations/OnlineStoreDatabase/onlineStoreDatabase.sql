@@ -53,5 +53,4 @@ REFERENCES `orders`(`order_id`),
 CONSTRAINT fk_order_id_items
 FOREIGN KEY (`item_id`)
 REFERENCES `items` (`item_id`)
-
 );
