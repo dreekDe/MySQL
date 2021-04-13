@@ -1,3 +1,4 @@
+#1
 SELECT 
     e.`employee_id`,
     CONCAT_WS(' ', e.`first_name`, e.`last_name`) AS `full_name`,
@@ -9,5 +10,22 @@ FROM
     `employees` AS e ON e.`employee_id` = d.`manager_id`
 ORDER BY e.`employee_id`
 LIMIT 5; 
+
+
+
+#5
+SELECT 
+    COUNT(*) AS `count`
+FROM
+    `employees`
+WHERE
+    salary > (SELECT 
+            AVG(`salary`)
+        FROM
+            `employees`
+        LIMIT 1);
+
+
+
 
 
