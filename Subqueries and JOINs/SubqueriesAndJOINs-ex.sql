@@ -11,6 +11,8 @@ FROM
 ORDER BY `address_id`
 LIMIT 5;
 
+
+
 #2
 SELECT 
     e.`first_name`,
@@ -27,6 +29,7 @@ ORDER BY e.`first_name` , e.`last_name`
 LIMIT 5;
 
 
+
 #3
 SELECT 
     e.`employee_id`,
@@ -40,6 +43,7 @@ FROM
 WHERE
    d.`name` = 'Sales'
 ORDER BY e.`employee_id` DESC;
+
 
 
 #4
@@ -58,6 +62,7 @@ ORDER BY d.`department_id` DESC
 LIMIT 5;
 
 
+
 #5
 SELECT 
     e.`employee_id`, e.`first_name`
@@ -69,6 +74,7 @@ WHERE
     ep.`project_id` IS NULL
 ORDER BY e.`employee_id` DESC
 LIMIT 3;
+
 
 
 #6 
@@ -107,6 +113,7 @@ ORDER BY e.`first_name` , p.`name`
 LIMIT 5;
 
 
+
 #8
 SELECT 
     e.`employee_id`,
@@ -126,6 +133,7 @@ WHERE
 ORDER BY p.`name`;
 
 
+
 #9
 SELECT 
     e.`employee_id`,
@@ -139,6 +147,7 @@ FROM
 WHERE
     e.`manager_id` IN (3 , 7)
 ORDER BY e.`first_name`;
+
 
 
 #10
@@ -159,6 +168,7 @@ ORDER BY employee_id
 LIMIT 5;
 
 
+
 #11
 SELECT 
     MIN(`avg_sum`) AS `min_average_salary`
@@ -167,8 +177,8 @@ FROM
         AVG(`salary`) AS `avg_sum`
     FROM
         `employees`
-    GROUP BY `department_id`) AS `avg_salary`
-;
+    GROUP BY `department_id`) AS `avg_salary`;
+
 
 
 #12
@@ -188,11 +198,71 @@ FROM
 WHERE
     c.`country_code` = 'BG'
         AND p.`elevation` > 2835
-ORDER BY p.`elevation` DESC
-;
+ORDER BY p.`elevation` DESC;
 
 
 
+#13
+SELECT 
+    mc.`country_code`,
+    COUNT(m.`mountain_range`) AS `mountain_range`
+FROM
+    `mountains_countries` AS mc
+        JOIN
+    `mountains` AS m ON m.id = mc.mountain_id
+GROUP BY country_code
+HAVING mc.`country_code` IN ('BG' , 'US', 'RU')
+ORDER BY `mountain_range` DESC;
 
+
+
+#14
+ SELECT 
+    c.`country_name`, r.`river_name`
+FROM
+    `countries` AS c
+        LEFT JOIN
+    `countries_rivers` AS cr ON cr.country_code = c.country_code
+        LEFT JOIN
+    `rivers` AS r ON cr.river_id = r.id
+WHERE
+    `continent_code` = 'AF'
+ORDER BY `country_name`
+LIMIT 5;
+
+
+     
+#16
+SELECT 
+    COUNT(*) AS `country_count`
+FROM
+    `countries` AS c
+        LEFT JOIN
+    `mountains_countries` AS mc ON mc.country_code = c.country_code
+WHERE
+    mc.`mountain_id` IS NULL;
+
+
+
+#17
+SELECT 
+    c.`country_name`,
+    MAX(p.`elevation`) AS `highest_peak_elevation`,
+    MAX(r.`length`) AS `longest_river_length`
+FROM
+    `countries` AS c
+        JOIN
+    `mountains_countries` AS mc ON mc.country_code = c.country_code
+        JOIN
+    `mountains` AS m ON m.id = mc.mountain_id
+        JOIN
+    `peaks` AS p ON p.mountain_id = mc.mountain_id
+        JOIN
+    `countries_rivers` AS cr ON cr.country_code = c.country_code
+        JOIN
+    `rivers` AS r ON r.id = cr.river_id
+GROUP BY c.`country_name`
+ORDER BY `highest_peak_elevation` DESC , longest_river_length DESC , `country_name` ASC
+LIMIT 5;
 
 
