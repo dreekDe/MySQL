@@ -19,7 +19,8 @@ END
 SELECT UFN_COUNT_EMPLOYEES_BY_TOWN('Sofia') AS `count`;
                                                                                            
 
-#2
+#2 
+                                                                                           
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_raise_salaries`(`department_name` VARCHAR(45))
 BEGIN
 UPDATE `employees` AS e
@@ -31,7 +32,23 @@ WHERE
     d.`name` = `department_name`;
 END 
                                                                                            
+#2nd var                                                                                           
                                                                                            
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_raise_salaries`(`department_name` VARCHAR(45))
+BEGIN
+ UPDATE `employees` AS e
+        JOIN
+    `departments` AS d ON d.department_id = e.department_id 
+SET 
+    e.`salary` = e.`salary` * 1.05
+WHERE
+    d.`name` = `department_name`;
+    
+SELECT `first_name`, `salary`
+FROM `employees`
+WHERE  d.`name` =  `department_name`
+ORDER BY `first_name`, `salary`;
+END                                                                                           
                                                                                            
                                                                                     
     
