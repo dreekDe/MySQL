@@ -52,5 +52,11 @@ FROM `employees` as e
     `departments` AS d ON d.department_id = e.department_id 
 WHERE  d.`name` =  `department_name`
 ORDER BY `first_name`, `salary`;
-END                                                                            
+END    
+                                                                                           
+ 
+CALL usp_raise_salaries('Finance');
+                                                                                           
+                                                                                           
+                                                                                           
     
