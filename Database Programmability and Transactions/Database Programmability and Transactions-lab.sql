@@ -37,7 +37,7 @@ CALL usp_raise_salaries('Finance');
                                                                                            
  #3
 
- CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_raise_salary_by_id`(id INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_raise_salary_by_id`(id INT)
 BEGIN
 DECLARE does_exist INT;
 START TRANSACTION;
