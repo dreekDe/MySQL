@@ -11,7 +11,7 @@ CREATE TABLE `bank_accounts` (
     `id` INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `account_number` VARCHAR(10) NOT NULL,
     `balance` DECIMAL(10 , 2 ) NOT NULL,
-    `client_id` INT(11) NOT NULL,
+    `client_id` INT(11) NOT NULL UNIQUE,
     CONSTRAINT fk_ba_cl FOREIGN KEY (`client_id`)
         REFERENCES `clients` (`id`)
 );
@@ -52,5 +52,3 @@ CREATE TABLE `employees_clients` (
     CONSTRAINT fk_ec_c FOREIGN KEY (`client_id`)
         REFERENCES `clients` (`id`)
 );
-
-
