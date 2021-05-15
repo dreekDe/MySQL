@@ -3,7 +3,7 @@ USE `ruk_database`;
 
 CREATE TABLE `clients` (
     `id` INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `full_name` VARCHAR(45) NOT NULL,
+    `full_name` VARCHAR(50) NOT NULL,
     `age` INT(11) NOT NULL
 );
 
@@ -28,7 +28,7 @@ CREATE TABLE `cards` (
 
 CREATE TABLE `branches` (
     `id` INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `name` VARCHAR(30) NOT NULL
+    `name` VARCHAR(30) NOT NULL UNIQUE
 );
 
 
@@ -52,3 +52,5 @@ CREATE TABLE `employees_clients` (
     CONSTRAINT fk_ec_c FOREIGN KEY (`client_id`)
         REFERENCES `clients` (`id`)
 );
+
+
