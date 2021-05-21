@@ -58,7 +58,7 @@ CREATE TABLE `movies` (
 `genre_id` INT, 
 `category_id` INT , 
 `rating`DECIMAL, 
-`otes` TEXT
+`notes` TEXT
 );
 
 ALTER TABLE `movies`
